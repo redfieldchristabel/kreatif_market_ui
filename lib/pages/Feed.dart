@@ -68,9 +68,9 @@ class Feed extends StatelessWidget {
         child: FloatingActionButton(
           onPressed: () {
             print("dah tekan ");
-            MyApp.mode.value = Theme.of(context).brightness == Brightness.light
-                ? Brightness.dark
-                : Brightness.light;
+            MyApp.mode.value = MyApp.mode.value == ThemeMode.light
+                ? ThemeMode.dark
+                : ThemeMode.light;
           },
           child: Icon(Icons.lightbulb_outline),
         ),

@@ -6,15 +6,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static ValueNotifier<Brightness> mode = ValueNotifier<Brightness>(
-      Brightness.light); // This widget is the root of your application.
+  static ValueNotifier<ThemeMode> mode = ValueNotifier<ThemeMode>(
+      ThemeMode.light); // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Brightness>(
+    return ValueListenableBuilder<ThemeMode>(
         valueListenable: mode,
         builder: (context, value, _) {
           return MaterialApp(
             title: 'Kreatif Media',
+            themeMode: ThemeMode.system,
             theme: ThemeData(
                 // This is the theme of your application.
                 //
@@ -32,7 +33,13 @@ class MyApp extends StatelessWidget {
                 // the app on. For desktop platforms, the controls will be smaller and
                 // closer together (more dense) than on mobile platforms.
                 visualDensity: VisualDensity.adaptivePlatformDensity,
-                brightness: value),
+                brightness: Brightness.light),
+            darkTheme: ThemeData(
+                primarySwatch: Colors.blue,
+                primaryColor: Colors.white,
+                accentColor: Colors.pinkAccent,
+                visualDensity: VisualDensity.adaptivePlatformDensity,
+                brightness: Brightness.dark),
             home: Feed(),
             debugShowCheckedModeBanner: false,
           );
